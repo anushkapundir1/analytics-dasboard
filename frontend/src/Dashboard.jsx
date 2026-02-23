@@ -44,7 +44,7 @@ function Dashboard() {
   ) => {
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/analytics?selected_feature=${feature}&start_date=${start_date}&age_group=${age_group}&gender=${gender}`,
+        `https://analytics-dashboard-hgqs.onrender.com/analytics?selected_feature=${feature}&start_date=${start_date}&age_group=${age_group}&gender=${gender}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -75,7 +75,7 @@ function Dashboard() {
     setSelectedFeature(data.feature_name);
 
     await axios.post(
-      "http://127.0.0.1:8000/track",
+      "https://analytics-dashboard-hgqs.onrender.com/track",
       { feature_name: "bar_chart_click" },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -91,7 +91,7 @@ function Dashboard() {
     Cookies.set("filters", JSON.stringify(updated));
 
     await axios.post(
-      "http://127.0.0.1:8000/track",
+      "https://analytics-dashboard-hgqs.onrender.com/track",
       { feature_name: name + "_filter" },
       { headers: { Authorization: `Bearer ${token}` } }
     );
